@@ -38,6 +38,7 @@ echo $tudrukud[$rand];
 ?>
 
 <p>________________________________________</p>
+<p> Auto margid</p>
 <?php
 $mark = array( "Subaru","BMW","Acura","Mercedes-Benz","Lexus","GMC","Volvo","Toyota","Volkswagen","Volkswagen","GMC","Jeep","Saab","Hyundai","Subaru","Mercedes-Benz",
 "Honda","Kia","Mercedes-Benz","Chevrolet","Chevrolet","Porsche","Buick","Dodge","GMC","Dodge","Nissan","Dodge","Jaguar","Ford","Honda","Toyota","Jeep",
@@ -60,13 +61,45 @@ $vin = array("1GKS1GKC8FR966658", "1FTEW1C87AK375821", "1G4GF5E30DF760067", "1FT
 "2G61W5S88E9666199", "5GADV33W17D256205", "2C3CDXDT9CH683075", "2G4GU5X0E9989574", "WAUJC58E53A641651", "WDDEJ7KB3CA053774", "3D73M3CL6AG890452", 
 "5GAER13D19J026924", "1G4HC5EM1BU329204", "3VWML7AJ6CM772736", "3C6TD4HT2CG011211", "JTDZN3EU2FJ023675", "JN8AZ1MU4CW041721", "KNAFX5A82F5991024", 
 "1N6AA0CJ1D57470", "WAUEG98E76A780908", "WAUAF78E96A920706", "1GT01XEG8FZ268942", "1FTEW1CW4AF371278", "JN1AZ4EH8DM531691", "WAUEKAFBXAN294295", 
-"1N6AA0EDXFN868772", "WBADW3C59DJ422810")
+"1N6AA0EDXFN868772", "WBADW3C59DJ422810");
+
+
+$margidkokku = count($mark);
+echo "<br> autosi kokku on: ", $margidkokku;
+$vinkokku = count($vin);
+echo " <br> Vin koode kokku on: ", $vinkokku;
+
+
+$toyota = array_search( "Toyota", $mark);
+$audi = array_search( "Audi", $mark);
+echo " <br> toyotasi on: ", $toyota;
+echo " <br> Audisi on on: ", $audi;
+
+echo " <br> vin koodid alla 17 tähe: <br>";
+foreach ($vin as $v) {
+  if (strlen($v) < 17) {
+    echo $v. "<br>";
+  }
+  
+}
 
 //https://www.w3schools.com/php/php_arrays_functions.asp
 
+?>
 
 
+<p>________________________________________</p>
+<h4>keskmised palgad ja firmad</h4>
+<?php
+$palgad = array(1220,1213,1295,1312,1298,1354,1296,1286,1292,1327,1369,1455);
+$palgakeskmine =  array_sum($palgad) / count($palgad);
+echo "palga keskmine on: ", $palgakeskmine;
 
+
+//firmad
+$firmad = array("Kimia","Mynte","Voomm","Twiyo","Layo","Talane","Gigashots","Tagchat","Quaxo","Voonyx","Kwilith","Edgepulse","Eidel","Eadel","Jaloo","Oyope","Jamia");
+sort($firmad);
+echo "kuvan kõik firmad: ", $firmad;
 ?>
 
  </div>
