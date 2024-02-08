@@ -90,6 +90,13 @@ foreach ($vin as $v) {
 
 <p>________________________________________</p>
 <h4>keskmised palgad ja firmad</h4>
+
+<form action="#" method="get">
+        <p>eemalda mingi auto listist</p>
+        vanus = <input type="text" name="autolist"><br>
+        <input type="submit" value="eemalda!">
+    </form>
+
 <?php
 $palgad = array(1220,1213,1295,1312,1298,1354,1296,1286,1292,1327,1369,1455);
 $palgakeskmine =  array_sum($palgad) / count($palgad);
@@ -97,12 +104,163 @@ echo "palga keskmine on: ", $palgakeskmine;
 
 
 //firmad
-$firmad = array("Kimia","Mynte","Voomm","Twiyo","Layo","Talane","Gigashots","Tagchat","Quaxo","Voonyx","Kwilith","Edgepulse","Eidel","Eadel","Jaloo","Oyope","Jamia");
+$firmad = array(" Kimia "," Mynte "," Voomm "," Twiyo "," Layo "," Talane "," Gigashots "," Tagchat "," Quaxo "," Voonyx "," Kwilith "," Edgepulse "," Eidel "," Eadel "," Jaloo "," Oyope "," Jamia ");
 sort($firmad);
-echo "kuvan kõik firmad: ", $firmad;
+$firmadstr = implode($firmad);
+echo " <br> kuvan kõik firmad: ", $firmadstr;
+
+$input = $_GET['autolist'];
+unset($firmad[$input]);
+echo "<br> ____________________________________________________ <br>";
+var_dump($firmad);
+
 ?>
 
- </div>
+
+
+
+<p>________________________________________</p>
+<h4>Riigid ja Hiina nimed</h4>
+
+<?php
+
+//* kuva kõige pikema riigi nime märkide arv
+
+
+$Riigid = array ("Indonesia","Canada","Kyrgyzstan","Germany","Philippines",
+"Philippines","Canada","Philippines","South Sudan","Brazil",
+"Democratic Republic of the Congo","Indonesia","Syria","Sweden",
+"Philippines","Russia","China","Japan","Brazil","Sweden","Mexico","France",
+"Kazakhstan","Cuba","Portugal","Czech Republic");
+
+$maxt = max(array_map('strlen' , $Riigid));
+echo "pikk on: ", $maxt;
+
+
+
+
+
+$hiina = array(
+  "瀚聪","月松","雨萌","展博","雪丽","哲恒","慧妍","博裕","宸瑜","奕漳",
+  "思宏","伟菘","彦歆","睿杰","尹智","琪煜","惠茜","晓晴","志宸","博豪",
+  "璟雯","崇杉","俊誉","军卿","辰华","娅楠","志宸","欣妍","明美");
+
+  sort($hiina);
+foreach ($hiina as $list) {
+  echo( "<br>". $list ."<br>");
+}
+
+echo ("esimene on: ". reset( $hiina ));
+echo (" <br> Viimane on: ". end($hiina))
+?>
+
+
+
+
+
+<p>________________________________________</p>
+<h4>Kasutaja otsimine?</h4>
+
+<?php
+
+$kasutajad = array("Feake","Bradwell","Dreger","Bloggett","Lambole","Daish","Lippiett","
+Blackie","Stollenbeck","Houseago","Dugall","Sprowson","Kitley","Mcenamin",
+"Allchin","Doghartie","Brierly","Pirrone","Fairnie","Seal","Scoffins",
+"Galer","Matevosian","DeBlase","Cubbin","Izzett","Ebi","Clohisey",
+"Prater","Probart","Samwaye","Concannon","MacLure","Eliet","Kundt","Reyes");
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  $otsitav_nimi = $_POST["kasutajanimi"];
+
+  if (in_array($otsitav_nimi, $kasutajad)) {
+      $vastus = "Kasutaja $otsitav_nimi on olemas!";
+      $alert_class = "success";
+  } else {
+      $vastus = "Kasutajat $otsitav_nimi ei leitud!";
+      $alert_class = "danger";
+  }
+}
+?>
+    <div class="container mt-5">
+        <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="mb-3">
+                <label for="kasutajanimi" class="form-label">Sisesta kasutajanimi:</label>
+                <input type="text" class="form-control" id="kasutajanimi" name="kasutajanimi">
+            </div>
+            <button type="submit" class="btn btn-primary">Otsi</button>
+        </form>
+
+        <?php if ($_SERVER["REQUEST_METHOD"] == "POST"): ?>
+        <div class="alert alert-<?php echo $alert_class; ?> mt-3" role="alert">
+            <?php echo $vastus; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+
+
+
+    <p>________________________________________</p>
+<h4>pildid</h4>
+
+
+
+
+                
+
+
+
+
+
+<div class="container mt-5">
+<div class="mb-3">
+    <h3>Kolmas pilt:</h3>
+    <img src="img/<?php echo $pildid[2]; ?>" class="img-fluid" alt="Kolmas pilt">
+</div>
+
+<div class="mb-3">
+    <h3>Kõik pildid:</h3>
+    <div class="row row-cols-6">
+        <?php foreach ($pildid as $pilt): ?>
+            <div class="col">
+                <img src="img/<?php echo $pilt; ?>" class="img-fluid" alt="<?php echo $pilt; ?>">
+            </div>
+        <?php endforeach; 
+        
+        
+        $pildid = array("prentice.webp","freeland.webp","peterus.webp","devlin.webp","gabriel.webp","pete.webp");
+
+if (!is_dir('img')) {
+    mkdir('img');
+}
+
+foreach ($pildid as $pilt) {
+    if (!file_exists('img/' . $pilt)) {
+        copy($pilt, 'img/' . $pilt);
+    }
+}
+?>
+        
+        
+        ?>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
+
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   </body>
 </html>

@@ -54,7 +54,7 @@
     if($vanus1 > $vanus2){
         echo '1. isik on vanem';
         } else if($vanus1 < $vanus2) {
-        echo '2. isik on vanem';
+      echo '2. isik on vanem';
         } else if($vanus1 = $vanus2) 
         echo 'Te olete sama vanusega';
          else if ($vanus1 && $vanus2 = 0) {
