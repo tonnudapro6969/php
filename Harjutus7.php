@@ -85,7 +85,133 @@ echo kasutaja("JohnDoe");
 ?>
     
     
-    
+    <h2>Arvude valimine</h2>
+        <!-- Vorm arvude valimiseks -->
+        <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="form-group">
+                <label for="start">Algne arv:</label>
+                <input type="number" class="form-control" id="start" name="start" value="<?php echo isset($_GET['start']) ? $_GET['start'] : ''; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="end">Lõpparv:</label>
+                <input type="number" class="form-control" id="end" name="end" value="<?php echo isset($_GET['end']) ? $_GET['end'] : ''; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="step">Samm:</label>
+                <input type="number" class="form-control" id="step" name="step" value="<?php echo isset($_GET['step']) ? $_GET['step'] : '1'; ?>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Genereeri</button>
+        </form>
+
+        <?php
+        // Funktsioon arvude genereerimiseks vastavalt kasutaja sisendile
+        function generate_numbers($start, $end, $step = 1) {
+            $numbers = [];
+            for ($i = $start; $i <= $end; $i += $step) {
+                $numbers[] = $i;
+            }
+            return $numbers;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            // Kasutaja sisendist arvude genereerimine
+            if (isset($_GET['start']) && isset($_GET['end']) && isset($_GET['step'])) {
+                $start = $_GET["start"];
+                $end = $_GET["end"];
+                $step = $_GET["step"];
+                $numbers = generate_numbers($start, $end, $step);
+                echo "<h3>Genereeritud arvud:</h3>";
+                echo implode(", ", $numbers);
+            }
+        }
+        ?>
+    </div>
+<h3>ristkulik</h3>
+
+
+
+        <h2>Ristküliku pindala</h2>
+        <!-- Vorm arvude valimiseks -->
+        <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="form-group">
+                <label for="length">Pikkus:</label>
+                <input type="number" class="form-control" id="length" name="length" value="<?php echo isset($_GET['length']) ? $_GET['length'] : ''; ?>" required>
+            </div>
+            <div class="form-group">
+                <label for="width">Laius:</label>
+                <input type="number" class="form-control" id="width" name="width" value="<?php echo isset($_GET['width']) ? $_GET['width'] : ''; ?>" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Arvuta pindala</button>
+        </form>
+
+        <?php
+        // Funktsioon ristküliku pindala arvutamiseks
+        function rectangle_area($length, $width) {
+            return $length * $width;
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET") {
+            // Kasutaja sisendist arvude saamine ja ristküliku pindala arvutamine
+            if (isset($_GET['length']) && isset($_GET['width'])) {
+                $length = $_GET["length"];
+                $width = $_GET["width"];
+                $area = rectangle_area($length, $width);
+                echo "<h3>Ristküliku pindala:</h3>";
+                echo $area;
+            }
+        }
+        ?>
+
+
+        <h2>Isikukood</h2>
+        <!-- Vorm isikukoodi sisestamiseks -->
+        <form method="get" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+            <div class="form-group">
+                <label for="personal_code">Sisesta isikukood:</label>
+                <input type="text" class="form-control" id="personal_code" name="personal_code" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Kontrolli</button>
+        </form>
+
+        <?php
+        // Funktsioon isikukoodi kontrollimiseks
+        function validate_personal_code($code) {
+            if (strlen($code) !== 11) {
+                return "Vigane isikukood!";
+            }
+            $gender = ($code[0] == '5') ? 'Mees' : (($code[0] == '6') ? 'Naine' : 'Tundmatu');
+            $birth_date = substr($code, 5, 2) . '.' . substr($code, 3, 2) . '.' . substr($code, 1, 2);
+            return "Sugu: $gender, Sünniaeg: $birth_date";
+        }
+
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['personal_code'])) {
+            $personal_code = $_GET['personal_code'];
+            $result = validate_personal_code($personal_code);
+            echo "<h3>Tulemus:</h3>";
+            echo $result;
+        }
+        ?>
+
+
+
+
+
+
+
+
+
+        ?>
+
+
+
+
+
+
+
+
+
+
+
 
     
     
