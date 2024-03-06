@@ -26,41 +26,164 @@
 <body>
    
     
-  <header>
-    <!-- place navbar here -->
+<style>
+    /* Carousel styling */
+    #introCarousel,
+    .carousel-inner,
+    .carousel-item,
+    .carousel-item.active {
+      height: 100vh;
+    }
+
+    .carousel-item:nth-child(1) {
+      background-image: url('https://media.gq.com/photos/5bc4b85c6f8daa7dae417db4/16:9/w_2560%2Cc_limit/travel-guide-gq-malta.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(2) {
+      background-image: url('https://mdbootstrap.com/img/Photos/Others/images/77.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+    .carousel-item:nth-child(3) {
+      background-image: url('https://mdbootstrap.com/img/Photos/Others/images/78.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    /* Height for devices larger than 576px */
+    @media (min-width: 992px) {
+      #introCarousel {
+        margin-top: -58.59px;
+      }
+      #introCarousel,
+      .carousel-inner,
+      .carousel-item,
+      .carousel-item.active {
+        height: 50vh;
+      }
+    }
+
+    .navbar .nav-link {
+      color: #fff !important;
+    }
+
+    .maintxt {
+            position: relative;
+            text-align: center;
+            line-height: 4px; 
+        }
+
+        .maintxt img, .overlay-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        
+  </style>
+
+  <!-- Navbar -->
+  <div
+    class="container">
+  
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-dark d-none d-lg-block" style="z-index: 2000;">
+    <div class="container-fluid">
+        <a class="navbar-brand nav-link mr-auto" target="_blank" href="Kontrolltoo3avaleht.php">
+            <strong>Tkandmaa</strong>
+        </a>
+        <button class="navbar-toggler" type="button" data-mdb-collapse-init data-mdb-target="#navbarExample01"
+                aria-controls="navbarExample01" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarExample01" >
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+                <li class="nav-item active ">
+                    <a class="nav-link" aria-current="page" href="">Avaleht</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Kontakt</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">Minust</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Admin</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+        <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 col-md-8 col-centered">
+                <div class="maintxt">
+                    <span class="overlay-text" style="color: white; font-weight: bold; justify-content-center;">
+                        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                    <h1> Praktika Maltal</h1>
+                    <p>Minu välispraktika HKHKs </p>
+                      </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+      </div>
+    </div>
+  </nav>
+
+
+  </div>
+  
+  
+  <!-- Navbar -->
+
+  <!-- Carousel wrapper -->
+  <div id="introCarousel" class=" carousel-fade shadow-2-strong" data-mdb-carousel-init>
+    
+    <div class="carousel-inner">
+      <!-- Single item -->
+      <div class="carousel-item active">
+        <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+          <div class="d-flex justify-content-center align-items-center h-100">
+            <div class="text-white text-center" data-mdb-theme="dark">
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Single item -->
+ 
+      </div>
+
+
+      </div>
+    </div>
+    <!-- Inner -->
+
+    <!-- Controls -->
+ 
+  </div>
+  <!-- Carousel wrapper -->
 </header>
 <main>
     
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary bg-body-tertiary" data-bs-theme="dark" >
-        <div class="container">
-          <a class="navbar-brand" href="#">tkandmaa</a>
-            <img src="maltapilt.jpg" alt="Bootstrap" width="300" height="240">
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Avaleht</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Firmast</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Minust</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Kontakt</a>
-              </li>
 
-            </ul>
-
-          </div>
-        </div>
-
-    
-    
-    </nav>
 
 
         <div class="container">
