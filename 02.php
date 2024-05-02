@@ -12,12 +12,6 @@
 
 
     <?php
-    /*
-        harjutus 2
-        Jan-Martti Olop
-        01.02.2024
-  
-    */
 //arvutamine
     $arv1 = 24;
     $arv2 = 45;
