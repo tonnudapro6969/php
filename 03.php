@@ -24,12 +24,6 @@
     </form>
 
     <?php
-    /*
-        harjutus 3
-        Jan-Martti Olop
-        01.02.2024
-  
-    */
     
       if ( ! empty($_GET) ) {;
         $a = $_GET['a'];
